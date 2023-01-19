@@ -5,10 +5,11 @@ on:
   push:
 jobs:
   build:
-    name: Post welcome comment
     runs-on: ubuntu-latest
+    name: Post welcome comment
+
     steps:
-      - run: echo "hello world"
+      - uses: actions/checkout@v3
       - run: gh pr comment $PR_URL --body "Welcome to the repository!"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
